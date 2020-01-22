@@ -113,11 +113,8 @@ class Node:
 def make_tree(node, examples, labels, attributes, features_with_values, features, default_guess=0):
     '''Creates a decision tree from the current node down, with max depth = len(attributes)'''
     if len(attributes) > 0:
-        print(attributes)
         curr_entropy = entropy(labels)
-        print("curr_entropy", curr_entropy)
         exp_entropy, best_choice, best_value = entropy_exp(examples, labels, attributes)
-        print("entropy_exp", exp_entropy, best_choice, best_value)
 
         if curr_entropy <= exp_entropy:
             # cannot decrease entropy, so terminate this branch
@@ -136,7 +133,6 @@ def make_tree(node, examples, labels, attributes, features_with_values, features
             make_tree(node.children[0], examples_dict[0], labels_dict[0], copy.copy(attributes), features_with_values, default_guess)
             make_tree(node.children[1], examples_dict[1], labels_dict[1], copy.copy(attributes), features_with_values, default_guess)
         else:
-            print(len(features_with_values[best_choice]))
             for value in features_with_values[best_choice]:
                 node.children[value] = Node(node)
                 make_tree(node.children[value], examples_dict[value], labels_dict[value], copy.copy(attributes), features_with_values, default_guess)
