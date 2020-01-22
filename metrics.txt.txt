@@ -1,0 +1,5 @@
+Using no Chi^2 pruning and the data in DecileDTData.csv, the mean distance is 3.95, accuracy is 0.28, although this is predicting decile scores.
+
+Predicting "is_recid" using data from RecidDTData.csv, the accuracy is 0.67
+
+Predicting violent recidivism using data from ViolentRecidDTData.csv, the accuracy is 0.91
