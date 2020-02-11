@@ -3,7 +3,7 @@
 A program for creating a decision tree on a binary classification problem.
 
 TO RUN: use the command line as follows:
-    python3 decisiontree.py _filename_ (optional arguments)
+    python3 DT.py _filename_ (optional arguments)
 Where "_filename_" is the path to the data that should be trained on.
 The optional arguments are as follows:
     --hideTree Turns off the display of the trees.
@@ -31,15 +31,29 @@ Possible Future additions:
 
 '''
 
+'''
+Code Review (2.7.20):
+- Key error (use default dicts?)
+    --> File "DT.py", line 105, in classify return self.children[point[self.attribute]].classify(point)
+        KeyError: 'Asian'
+
+- Great comments and explanation of how to run it overall
+
+- Added functionality: print out a saved tree (perhaps put in CheckDT?)
+
+'''
+
 from collections import defaultdict, Counter
 from time import time
 import math
 import copy
 import argparse
 import numpy as np
+import json
 
 # column numbers - 1, with the first column being column 0 (and also not being looked at)
 NUMERIC_FEATURES = [2, 3, 4, 5, 6]
+JSON_FILE_PATH = "../Fairness/DecisionTreesData.json"
 
 class Node:
     ''' A node class for the decision tree.
@@ -360,9 +374,18 @@ def parse_args():
     args = p.parse_args()
     return args
 
+# Input: a list of all people (represented by dicts), a list of guesses (0s and 1s)
+# Output: none, but creates a JSON file with the results of the algorithm
+def make_measure_fairness_json(allPeople, guesses):
+    data_guesses_dict = {"people":allPeople, "DT":guesses}
+    data_guesses_str = str(data_guesses_dict)
+
+    with open(JSON_FILE_PATH, 'w') as file:
+        json.dump(data_guesses_dict, file)
+
 
 def main():
-    '''Creats and prints a decision tree on a binary classification problem.'''
+    '''Creates and prints a decision tree on a binary classification problem.'''
     args = parse_args()
     txt_file_name = args.filepath
     root = Node(None)
@@ -376,7 +399,7 @@ def main():
         display_tree(root, features)
         print()
     num_correct = 0
-    predictions = []
+    predictions = [] # a list of recidivism guesses (0s and 1s)
     for i in range(len(testing)):
         test = testing[i]
         label = testing_labels[i]
@@ -409,6 +432,16 @@ def main():
         string = string[:-1]
         with open(args.savePred, 'w') as file:
             file.write(string)
+
+    # Make a list of all people, represented by dictionaries
+    all_people = []
+    for person in testing:
+        temp_dict = {}
+        for i in range(len(person)):
+            temp_dict[features[i]] = person[i]
+        all_people.append(temp_dict)
+    # Make a json file with alg results to be used for "MeasureFairness.py"
+    make_measure_fairness_json(all_people, predictions)
 
 
 
