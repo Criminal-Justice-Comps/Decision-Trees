@@ -1,0 +1,65 @@
+
+juv_other_count<=0
+|	juv_fel_count<=0
+|	|	|	juv_misd_count<=0
+|	|	|	|	|	priors_count<=0
+|	|	|	|	|	|	|	age<=21: 0
+|	|	|	|	|	|	|	age>21: 0
+|	|	|	|	|	priors_count>0
+|	|	|	|	|	|	|	age<=24: 0
+|	|	|	|	|	|	|	age>24: 0
+|	|	|	juv_misd_count>0
+|	|	|	|	|	sexMale
+|	|	|	|	|	|	|	priors_count<=1: 0
+|	|	|	|	|	|	|	priors_count>1: 1
+|	|	|	|	|	sexFemale
+|	|	|	|	|	|	|	age<=27: 0
+|	|	|	|	|	|	|	age>27: 0
+|	juv_fel_count>0
+|	|	|	age<=26
+|	|	|	|	|	priors_count<=1
+|	|	|	|	|	|	|	juv_misd_count<=0: 1
+|	|	|	|	|	|	|	juv_misd_count>0: 1
+|	|	|	|	|	priors_count>1
+|	|	|	|	|	|	|	juv_misd_count<=0: 1
+|	|	|	|	|	|	|	juv_misd_count>0: 1
+|	|	|	age>26
+|	|	|	|	|	juv_misd_count<=0
+|	|	|	|	|	|	|	priors_count<=10: 0
+|	|	|	|	|	|	|	priors_count>10: 0
+|	|	|	|	|	juv_misd_count>0
+|	|	|	|	|	|	|	priors_count<=9: 0
+|	|	|	|	|	|	|	priors_count>9: 0
+juv_other_count>0
+|	juv_fel_count<=0
+|	|	|	juv_misd_count<=0
+|	|	|	|	|	raceOther
+|	|	|	|	|	|	|	priors_count<=0: 1
+|	|	|	|	|	|	|	priors_count>0: 0
+|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	priors_count<=0: 0
+|	|	|	|	|	|	|	priors_count>0: 1
+|	|	|	|	|	raceCaucasian
+|	|	|	|	|	|	|	age<=20: 0
+|	|	|	|	|	|	|	age>20: 0
+|	|	|	|	|	raceHispanic
+|	|	|	|	|	|	|	age<=31: 0
+|	|	|	|	|	|	|	age>31: 0
+|	|	|	juv_misd_count>0
+|	|	|	|	|	priors_count<=12
+|	|	|	|	|	|	|	age<=22: 1
+|	|	|	|	|	|	|	age>22: 1
+|	|	|	|	|	priors_count>12
+|	|	|	|	|	|	|	age<=30: 1
+|	|	|	|	|	|	|	age>30: 1
+|	juv_fel_count>0
+|	|	|	juv_misd_count<=0
+|	|	|	|	|	priors_count<=1: 1
+|	|	|	|	|	priors_count>1
+|	|	|	|	|	|	|	age<=20: 0
+|	|	|	|	|	|	|	age>20: 1
+|	|	|	juv_misd_count>0
+|	|	|	|	|	priors_count<=19
+|	|	|	|	|	|	|	age<=23: 1
+|	|	|	|	|	|	|	age>23: 1
+|	|	|	|	|	priors_count>19: 1

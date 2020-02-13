@@ -24,23 +24,6 @@ In this program, we assume that:
     First column of the file contains IDs, and should not be looked at as a feature.
 
 
-Possible Future additions:
-    Chi^2 pruning (how to do for numeric?)
-    Cross-validation (10 fold probably best option)
-
-
-'''
-
-'''
-Code Review (2.7.20):
-- Key error (use default dicts?)
-    --> File "DT.py", line 105, in classify return self.children[point[self.attribute]].classify(point)
-        KeyError: 'Asian'
-
-- Great comments and explanation of how to run it overall
-
-- Added functionality: print out a saved tree (perhaps put in CheckDT?)
-
 '''
 
 from collections import defaultdict, Counter
@@ -54,6 +37,18 @@ import json
 # column numbers - 1, with the first column being column 0 (and also not being looked at)
 NUMERIC_FEATURES = [2, 3, 4, 5, 6]
 JSON_FILE_PATH = "../Fairness/DecisionTreesData.json"
+
+def parse_args():
+    ''' Parse command line arguments '''
+    p = argparse.ArgumentParser()
+    p.add_argument("filepath", default="tennis.txt", help="Path to text file containing training data.")
+    p.add_argument("--hideTree", action="store_true", help="Turn off the display of all trees.")
+    p.add_argument("--saveTree", default='save_tree.txt', help='Filepath to save the tree in.')
+    p.add_argument("--savePred", default='save_pred.txt', help='Filepath to save the predictions in.')
+    p.add_argument("--trainCount", type=int, default=100, help='Number of data points to use as the training set.')
+    p.add_argument("--maxDepth", type=int, default=-1, help="The maximum depth to build the DT to. By default, no maximum depth is set.")
+    args = p.parse_args()
+    return args
 
 class Node:
     ''' A node class for the decision tree.
@@ -124,13 +119,14 @@ class Node:
 
 
 
-def make_tree(node, examples, labels, attributes, features_with_values, features, default_guess=0):
-    '''Creates a decision tree from the current node down, with max depth = len(attributes)'''
+def make_tree(node, examples, labels, attributes, features_with_values, default_guess=0, max_depth = math.inf, depth = 0):
+    '''Creates a decision tree from the current node down, with max depth = len(attributes) if not set by user'''
     if len(attributes) > 0:
+        depth += 1
         curr_entropy = entropy(labels)
         exp_entropy, best_choice, best_value = entropy_exp(examples, labels, attributes)
 
-        if curr_entropy <= exp_entropy:
+        if curr_entropy <= exp_entropy or depth > max_depth:
             # cannot decrease entropy, so terminate this branch
             node.set_guess(labels, default_guess)
             return 0
@@ -144,12 +140,12 @@ def make_tree(node, examples, labels, attributes, features_with_values, features
         if best_choice in NUMERIC_FEATURES:
             node.value = best_value
             node.children = {0: Node(node), 1: Node(node)}
-            make_tree(node.children[0], examples_dict[0], labels_dict[0], copy.copy(attributes), features_with_values, default_guess)
-            make_tree(node.children[1], examples_dict[1], labels_dict[1], copy.copy(attributes), features_with_values, default_guess)
+            make_tree(node.children[0], examples_dict[0], labels_dict[0], copy.copy(attributes), features_with_values, default_guess, max_depth, depth)
+            make_tree(node.children[1], examples_dict[1], labels_dict[1], copy.copy(attributes), features_with_values, default_guess, max_depth, depth)
         else:
             for value in features_with_values[best_choice]:
                 node.children[value] = Node(node)
-                make_tree(node.children[value], examples_dict[value], labels_dict[value], copy.copy(attributes), features_with_values, default_guess)
+                make_tree(node.children[value], examples_dict[value], labels_dict[value], copy.copy(attributes), features_with_values, default_guess, max_depth, depth)
 
     else:
         # current node is a leaf, so terminate this branch
@@ -305,43 +301,35 @@ def save_tree(filepath, features, root):
         file.write(string)
     return 1
 
-def get_tree_string(node, features, string=''):
+def get_tree_string(node, features, depth = 0, string=''):
     ''' Returns a string representation of a DT to be saved for later.
-    The tree is saved in the following format:
-    if the node's feature is numeric:
-        '[ num attribute value 0: child[0] 1: child[1] ] '
-    Else, if the node's feature is categorical:
-        '[ cat attribute value1 : child[value1] value2 : child[value2] ... ] '
-    If the node is a leaf:
-        '[ leaf guess ] '
+    The tree is saved in the same format that it is printed in.
     '''
-    if node.children != None:
-        if node.attribute in NUMERIC_FEATURES:
-            string += '[ num '
-            string += str(features[node.attribute])
-            string += ' '
-            string += str(node.value)
-            string += ' 0: '
-            string += get_tree_string(node.children[0], features)
-            string += ' 1: '
-            string += get_tree_string(node.children[1], features)
-            string += '] '
-            return string
-        else:
-            string += '[ cat '
-            string += str(features[node.attribute])
-            string += ' '
-            for value in node.children:
+    if node.guess == None:
+        string += "\n"
+        for value, child in node.children.items():
+            if depth != 0:
+                string += "|\t"*(depth-1)
+                string += "|\t"*depth
+            if node.attribute in NUMERIC_FEATURES:
+                if value == 1:
+                    string += str(features[node.attribute])
+                    string +=  ">"
+                    string += str(node.value)
+                else:
+                    string += str(features[node.attribute])
+                    string += "<="
+                    string += str(node.value)
+            else:
+                string += str(features[node.attribute])
                 string += str(value)
-                string += ' : '
-                string += get_tree_string(node.children[value], features)
-                string += '] '
-            return string
+            string = get_tree_string(child, features, depth+1, string)
     else:
-        string += '[ leaf '
+        string += ": "
         string += str(node.guess)
-        string += ' ] '
-        return string
+        string += "\n"
+    return string
+
 
 def display_tree(node, features, depth=0):
     '''Prints out the tree with root 'node'.'''
@@ -363,26 +351,6 @@ def display_tree(node, features, depth=0):
         print(": ", end='')
         print(node.guess)
 
-def parse_args():
-    ''' Parse command line arguments '''
-    p = argparse.ArgumentParser()
-    p.add_argument("filepath", default="tennis.txt", help="Path to text file containing training data.")
-    p.add_argument("--hideTree", action="store_true", help="Turn off the display of all trees.")
-    p.add_argument("--saveTree", default='save_tree.txt', help='Filepath to save the tree in.')
-    p.add_argument("--savePred", default='save_pred.txt', help='Filepath to save the predictions in.')
-    p.add_argument("--trainCount", type=int, default=100, help='Number of data points to use as the training set.')
-    args = p.parse_args()
-    return args
-
-# Input: a list of all people (represented by dicts), a list of guesses (0s and 1s)
-# Output: none, but creates a JSON file with the results of the algorithm
-def make_measure_fairness_json(allPeople, guesses):
-    data_guesses_dict = {"people":allPeople, "DT":guesses}
-    data_guesses_str = str(data_guesses_dict)
-
-    with open(JSON_FILE_PATH, 'w') as file:
-        json.dump(data_guesses_dict, file)
-
 
 def main():
     '''Creates and prints a decision tree on a binary classification problem.'''
@@ -393,7 +361,12 @@ def main():
     start_time = time()
     training, training_labels, testing, testing_labels, features, features_with_values = get_data(txt_file_name, args.trainCount)
     attributes = list(np.arange(len(training[0])))
-    make_tree(root, training, training_labels, attributes, features_with_values, features)
+
+    if args.maxDepth <= 0:
+        make_tree(root, training, training_labels, attributes, features_with_values)
+    else:
+        make_tree(root, training, training_labels, attributes, features_with_values, 0, args.maxDepth)
+
     end_time = time()
     if not args.hideTree:
         display_tree(root, features)
@@ -404,7 +377,9 @@ def main():
         test = testing[i]
         label = testing_labels[i]
         pred = root.classify(test)
-        predictions.append(pred)
+        test.append(pred)
+        test.append(label)
+        predictions.append(test)
         if pred == int(label):
             num_correct += 1
 
@@ -420,28 +395,16 @@ def main():
         save_tree(args.saveTree, features, root)
 
     if args.savePred != 'NULL':
-        string = ''
-        for pred in predictions:
-            string += str(pred)
-            string += ','
-        string = string[:-1]
-        string += '\n'
-        for label in testing_labels:
-            string += str(label)
-            string += ","
+        string = 'sex,race,age,juv_fel_count,juv_misd_count,juv_other_count,priors_count,prediction,truth\n'
+        for person in predictions:
+            for el in person:
+                string += str(el)
+                string += ','
+            string = string[:-1]
+            string += '\n'
         string = string[:-1]
         with open(args.savePred, 'w') as file:
             file.write(string)
-
-    # Make a list of all people, represented by dictionaries
-    all_people = []
-    for person in testing:
-        temp_dict = {}
-        for i in range(len(person)):
-            temp_dict[features[i]] = person[i]
-        all_people.append(temp_dict)
-    # Make a json file with alg results to be used for "MeasureFairness.py"
-    make_measure_fairness_json(all_people, predictions)
 
 
 

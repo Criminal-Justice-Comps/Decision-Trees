@@ -1,0 +1,67 @@
+
+juv_fel_count<=0
+|	juv_misd_count<=0
+|	|	|	juv_other_count<=0
+|	|	|	|	|	age<=37
+|	|	|	|	|	|	|	priors_count<=0: 0
+|	|	|	|	|	|	|	priors_count>0: 0
+|	|	|	|	|	age>37
+|	|	|	|	|	|	|	priors_count<=1: 0
+|	|	|	|	|	|	|	priors_count>1: 0
+|	|	|	juv_other_count>0
+|	|	|	|	|	priors_count<=1
+|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	priors_count>1
+|	|	|	|	|	|	|	age<=29: 0
+|	|	|	|	|	|	|	age>29: 0
+|	juv_misd_count>0
+|	|	|	juv_other_count<=1
+|	|	|	|	|	age<=29
+|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	age>29
+|	|	|	|	|	|	|	priors_count<=6: 0
+|	|	|	|	|	|	|	priors_count>6: 0
+|	|	|	juv_other_count>1
+|	|	|	|	|	age<=31
+|	|	|	|	|	|	|	priors_count<=3: 0
+|	|	|	|	|	|	|	priors_count>3: 0
+|	|	|	|	|	age>31
+|	|	|	|	|	|	|	priors_count<=12: 1
+|	|	|	|	|	|	|	priors_count>12: 0
+juv_fel_count>0
+|	priors_count<=21
+|	|	|	juv_misd_count<=2
+|	|	|	|	|	age<=19
+|	|	|	|	|	|	|	juv_other_count<=1: 0
+|	|	|	|	|	|	|	juv_other_count>1: 1
+|	|	|	|	|	age>19
+|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	juv_misd_count>2
+|	|	|	|	|	age<=24: 0
+|	|	|	|	|	age>24
+|	|	|	|	|	|	|	juv_other_count<=0: 1
+|	|	|	|	|	|	|	juv_other_count>0: 1
+|	priors_count>21
+|	|	|	age<=37
+|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	raceOther: 1
+|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	raceNative American: 0
+|	|	|	age>37: 1

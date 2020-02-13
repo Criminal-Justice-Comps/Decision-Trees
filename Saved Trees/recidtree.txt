@@ -1,0 +1,253 @@
+
+juv_fel_count<=0
+|	juv_misd_count<=0
+|	|	|	juv_other_count<=0
+|	|	|	|	|	priors_count<=0
+|	|	|	|	|	|	|	age<=20
+|	|	|	|	|	|	|	|	|	sexMale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	|	|	sexFemale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	age>20
+|	|	|	|	|	|	|	|	|	raceCaucasian
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceHispanic
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceOther
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	priors_count>0
+|	|	|	|	|	|	|	age<=24
+|	|	|	|	|	|	|	|	|	raceCaucasian
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceHispanic
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 1
+|	|	|	|	|	|	|	|	|	raceOther
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	age>24
+|	|	|	|	|	|	|	|	|	raceCaucasian
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceHispanic
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceOther
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	juv_other_count>0
+|	|	|	|	|	priors_count<=0
+|	|	|	|	|	|	|	age<=20
+|	|	|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	age>20
+|	|	|	|	|	|	|	|	|	sexMale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	priors_count>0
+|	|	|	|	|	|	|	age<=20
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	age>20
+|	|	|	|	|	|	|	|	|	sexMale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 1
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	|	|	sexFemale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	juv_misd_count>0
+|	|	|	juv_other_count<=0
+|	|	|	|	|	age<=21
+|	|	|	|	|	|	|	priors_count<=1
+|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	priors_count>1
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	age>21
+|	|	|	|	|	|	|	priors_count<=1
+|	|	|	|	|	|	|	|	|	sexMale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	priors_count>1
+|	|	|	|	|	|	|	|	|	raceCaucasian
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	juv_other_count>0
+|	|	|	|	|	age<=23
+|	|	|	|	|	|	|	priors_count<=2
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	priors_count>2
+|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	sexFemale
+|	|	|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	age>23
+|	|	|	|	|	|	|	priors_count<=8
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	priors_count>8
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+juv_fel_count>0
+|	age<=39
+|	|	|	priors_count<=2
+|	|	|	|	|	juv_other_count<=0
+|	|	|	|	|	|	|	juv_misd_count<=0
+|	|	|	|	|	|	|	|	|	raceCaucasian
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 0
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 0
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	juv_misd_count>0: 1
+|	|	|	|	|	juv_other_count>0
+|	|	|	|	|	|	|	juv_misd_count<=0
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 0
+|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 0
+|	|	|	|	|	|	|	|	|	raceAsian: 0
+|	|	|	|	|	|	|	juv_misd_count>0: 0
+|	|	|	priors_count>2
+|	|	|	|	|	juv_other_count<=1
+|	|	|	|	|	|	|	juv_misd_count<=0
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	juv_misd_count>0
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 0
+|	|	|	|	|	|	|	|	|	raceOther: 0
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	juv_other_count>1
+|	|	|	|	|	|	|	juv_misd_count<=0
+|	|	|	|	|	|	|	|	|	raceCaucasian: 1
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	juv_misd_count>0
+|	|	|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	age>39
+|	|	|	priors_count<=7: 1
+|	|	|	priors_count>7
+|	|	|	|	|	juv_misd_count<=0
+|	|	|	|	|	|	|	juv_other_count<=0
+|	|	|	|	|	|	|	|	|	raceCaucasian: 0
+|	|	|	|	|	|	|	|	|	raceAfrican-American
+|	|	|	|	|	|	|	|	|	|	|	sexMale: 1
+|	|	|	|	|	|	|	|	|	|	|	sexFemale: 1
+|	|	|	|	|	|	|	|	|	raceHispanic: 1
+|	|	|	|	|	|	|	|	|	raceOther: 1
+|	|	|	|	|	|	|	|	|	raceNative American: 1
+|	|	|	|	|	|	|	|	|	raceAsian: 1
+|	|	|	|	|	|	|	juv_other_count>0: 1
+|	|	|	|	|	juv_misd_count>0: 0

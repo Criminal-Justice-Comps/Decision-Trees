@@ -1,0 +1,15 @@
+
+juv_fel_count<=0
+|	juv_misd_count<=0
+|	|	|	juv_other_count<=0: 0
+|	|	|	juv_other_count>0: 1
+|	juv_misd_count>0
+|	|	|	juv_other_count<=0: 1
+|	|	|	juv_other_count>0: 1
+juv_fel_count>0
+|	priors_count<=2
+|	|	|	juv_misd_count<=0: 1
+|	|	|	juv_misd_count>0: 1
+|	priors_count>2
+|	|	|	age<=51: 1
+|	|	|	age>51: 0
