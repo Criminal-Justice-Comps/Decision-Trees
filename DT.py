@@ -351,6 +351,15 @@ def display_tree(node, features, depth=0):
         print(": ", end='')
         print(node.guess)
 
+# Input: a list of all people (represented by dicts), a list of guesses (0s and 1s)
+# Output: none, but creates a JSON file with the results of the algorithm
+def make_measure_fairness_json(allPeople, guesses):
+    data_guesses_dict = {"people":allPeople, "DT":guesses}
+    data_guesses_str = str(data_guesses_dict)
+
+    with open(JSON_FILE_PATH, 'w') as file:
+        json.dump(data_guesses_dict, file)
+
 
 def main():
     '''Creates and prints a decision tree on a binary classification problem.'''
@@ -391,6 +400,16 @@ def main():
 
     print("Training time was", end_time - start_time)
 
+    # Make a list of all people, represented by dictionaries
+    all_people = []
+    for person in testing:
+        temp_dict = {}
+        for i in range(len(features)):
+            temp_dict[features[i]] = person[i]
+        all_people.append(temp_dict)
+    # Make a json file with alg results to be used for "MeasureFairness.py"
+    make_measure_fairness_json(all_people, predictions)
+
     if args.saveTree != 'NULL':
         save_tree(args.saveTree, features, root)
 
@@ -405,8 +424,6 @@ def main():
         string = string[:-1]
         with open(args.savePred, 'w') as file:
             file.write(string)
-
-
 
 
 
