@@ -408,7 +408,7 @@ def main():
             temp_dict[features[i]] = person[i]
         all_people.append(temp_dict)
     # Make a json file with alg results to be used for "MeasureFairness.py"
-    make_measure_fairness_json(all_people, predictions)
+    #make_measure_fairness_json(all_people, predictions)
 
     if args.saveTree != 'NULL':
         save_tree(args.saveTree, features, root)

@@ -1,0 +1,98 @@
+
+juv_fel_count<=0
+|	juv_misd_count<=0
+|	|	|	age<=30: 0
+|	|	|	age>30: 0
+|	juv_misd_count>0
+|	|	|	decile_score<=10: 1
+|	|	|	decile_score>10: 1
+juv_fel_count>0
+|	priors_count1
+|	|	|	juv_other_count<=0: 1
+|	|	|	juv_other_count>0: 1
+|	priors_count0: 1
+|	priors_count2
+|	|	|	juv_other_count<=3: 1
+|	|	|	juv_other_count>3: 0
+|	priors_count3
+|	|	|	age<=23: 0
+|	|	|	age>23: 1
+|	priors_count6
+|	|	|	decile_score<=8: 1
+|	|	|	decile_score>8: 0
+|	priors_count4
+|	|	|	juv_other_count<=2: 0
+|	|	|	juv_other_count>2: 0
+|	priors_count21: 1
+|	priors_count19
+|	|	|	raceAfrican-American: 1
+|	|	|	raceCaucasian: 0
+|	|	|	raceHispanic: 1
+|	|	|	raceOther: 1
+|	priors_count15
+|	|	|	juv_other_count<=0: 0
+|	|	|	juv_other_count>0: 1
+|	priors_count9
+|	|	|	juv_other_count<=1: 1
+|	|	|	juv_other_count>1: 1
+|	priors_count7
+|	|	|	age<=44: 1
+|	|	|	age>44: 0
+|	priors_count5
+|	|	|	age<=28: 1
+|	|	|	age>28: 0
+|	priors_count8
+|	|	|	decile_score<=4: 1
+|	|	|	decile_score>4: 0
+|	priors_count12
+|	|	|	juv_misd_count<=0: 1
+|	|	|	juv_misd_count>0: 1
+|	priors_count11
+|	|	|	juv_misd_count<=2: 0
+|	|	|	juv_misd_count>2: 1
+|	priors_count10
+|	|	|	age<=34: 1
+|	|	|	age>34: 0
+|	priors_count29: 0
+|	priors_count35: 1
+|	priors_count24
+|	|	|	juv_misd_count<=3: 1
+|	|	|	juv_misd_count>3: 1
+|	priors_count16
+|	|	|	decile_score<=10: 1
+|	|	|	decile_score>10: 1
+|	priors_count20
+|	|	|	age<=43: 0
+|	|	|	age>43: 1
+|	priors_count13
+|	|	|	juv_other_count<=0: 0
+|	|	|	juv_other_count>0: 1
+|	priors_count14
+|	|	|	age<=47: 1
+|	|	|	age>47: 0
+|	priors_count18
+|	|	|	age<=41: 1
+|	|	|	age>41: 0
+|	priors_count30: 1
+|	priors_count25: 1
+|	priors_count27
+|	|	|	juv_misd_count<=0: 1
+|	|	|	juv_misd_count>0: 0
+|	priors_count22: 1
+|	priors_count36: 1
+|	priors_count31: 1
+|	priors_count17
+|	|	|	age<=42: 1
+|	|	|	age>42: 0
+|	priors_count23
+|	|	|	age<=48: 1
+|	|	|	age>48: 0
+|	priors_count26
+|	|	|	age<=34: 0
+|	|	|	age>34: 1
+|	priors_count28: 0
+|	priors_count39: 1
+|	priors_count38: 1
+|	priors_count33: 1
+|	priors_count37: 1
+|	priors_count43: 1
